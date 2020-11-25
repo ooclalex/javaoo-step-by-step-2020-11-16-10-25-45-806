@@ -1,7 +1,5 @@
 package practice06;
 
-import practice05.Person;
-
 public class Teacher extends Person {
     private int klassNo;
     private Klass klass;
@@ -24,9 +22,10 @@ public class Teacher extends Person {
         return klass;
     }
 
+    @Override
     public String introduce() {
         String strClass = klass != null ? "Class " + klass.getNumber() : "No Class";
-        return super.introduce() + " " + "I am a Teacher. I teach " + strClass + ".";
+        return super.introduce() + " I am a Teacher. I teach " + strClass + ".";
     }
 
     public String introduceWith(Student student) {
@@ -34,10 +33,10 @@ public class Teacher extends Person {
         intro.append(" I am a Teacher. ");
         if (klass.equals(student.getKlass())) {
             intro.append("I teach ").append(student.getName()).append(".");
+        } else {
+            intro.append("I don't teach ").append(student.getName()).append(".");
         }
-        else {
-            intro.append("I don't teach " + student.getName() + ".");
-        }
+
         return intro.toString();
     }
 }
