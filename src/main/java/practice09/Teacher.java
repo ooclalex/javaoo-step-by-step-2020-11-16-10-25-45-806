@@ -30,9 +30,6 @@ public class Teacher extends Person {
         else {
             strClass = "Class ";
             strClass += klasses.stream().map(Klass::getNumber).map(String::valueOf).collect(Collectors.joining(", "));
-//            for (Klass klass : klasses) {
-//                strClass += klass.getNumber() + ", ";
-//            }
         }
         return super.introduce() + " I am a Teacher. I teach " + strClass + ".";
     }
