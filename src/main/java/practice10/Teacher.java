@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 public class Teacher extends Person {
     private List<Klass> klasses;
 
-
     public Teacher(int id, String name, int age) {
         super(id, name, age);
     }
@@ -14,7 +13,7 @@ public class Teacher extends Person {
     public Teacher(int id, String name, int age, List<Klass> klasses) {
         super(id, name, age);
         this.klasses = klasses;
-        klasses.stream().forEach(k -> k.setTeacher(this));
+        klasses.forEach(k -> k.setTeacher(this));
     }
 
     public List<Klass> getKlass() {
@@ -23,7 +22,7 @@ public class Teacher extends Person {
 
     @Override
     public String introduce() {
-        String strClass = "Class ";
+        String strClass;
         if (klasses == null || klasses.size() == 0) {
             strClass = "No Class";
         }
@@ -52,5 +51,15 @@ public class Teacher extends Person {
 
     public List<Klass> getClasses() {
         return klasses;
+    }
+
+    public void notifyNewMember(Student student, Klass klass) {
+        System.out.printf("I am %s. I know %s has joined %s.\r\n",
+                this.getName(), student.getName(), klass.getDisplayName());
+    }
+
+    public void notifyNewLeader(Student student, Klass klass) {
+        System.out.printf("I am %s. I know %s become Leader of %s.\r\n",
+                this.getName(), student.getName(), klass.getDisplayName());
     }
 }

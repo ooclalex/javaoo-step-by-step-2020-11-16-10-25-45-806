@@ -2,12 +2,11 @@ package practice10;
 
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Klass {
     private int number;
-    private List<Student> members = new ArrayList<Student>();
+    private List<Student> members = new ArrayList<>();
     private Student leader;
     private Teacher teacher;
 
@@ -33,7 +32,7 @@ public class Klass {
         if (members.contains(student)) {
             leader = student;
             if (teacher != null) {
-                System.out.println("I am " + teacher.getName() + ". I know " + student.getName() + " become Leader of " + getDisplayName() + ".");
+                teacher.notifyNewLeader(student, this);
             }
         }
         else {
@@ -48,7 +47,7 @@ public class Klass {
     public void appendMember(Student student) {
         members.add(student);
         if (teacher != null) {
-            System.out.println("I am " + teacher.getName() + ". I know " + student.getName() + " has joined " + getDisplayName() + ".");
+            teacher.notifyNewMember(student, this);
         }
     }
 }
